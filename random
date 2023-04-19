@@ -1,0 +1,108 @@
+<html>
+    <head>
+        <style>
+            div{
+                border:1px solid black;
+            }
+            body{
+                padding:15px;
+                background-color:#ddadaf;
+            }
+            
+            img{
+                padding:15px;
+                width:200px;
+                height:200px;
+                border:5px solid black;
+            }
+            textarea{
+                width:20px;
+                height:20px;
+            }
+        </style>
+    </head>
+<body>
+<?php
+session_start();
+$con = mysqli_connect("localhost","root","","upload");
+$id=$_SESSION['a'];
+$qr="select filename from images where filename='$id';";
+$res=mysqli_query($con,$qr);
+if(mysqli_num_rows($res)>=1)
+{
+while($row=mysqli_fetch_assoc($res))
+{
+
+$pat=$images['filename'];
+$we="select uname as c from upload where path in ('$pat');";
+$z=mysqli_query($con,$we);
+while($row=mysqli_fetch_assoc($z)){
+echo '<div style="float:left;width:30%">';
+echo '<b>'.$images['c'].' posted</b>';
+echo "<div align='center' style='background-color:#ddadaf'><img  src='$pat' height='200'  width='200' align='center'>";
+echo '<form method="post" >';
+echo  '<input type="hidden" name="path" value="'.$pat.'"><br>';
+echo '<button type="submit" name="like_but" style="background-color:pink;color:red;width:30px;">like</button>&nbsp';
+echo '<span class="likes">'.count_likes($pat).'</span><br>';
+echo '</form><br>';
+//veiw all comments
+echo 'COMMENTS<br><br>';
+$rt="select name,comment from comments where path='$pat';";
+$resu=mysqli_query($con,$rt);
+if(mysqli_num_rows($resu)>=1)
+{
+while($row=mysqli_fetch_assoc($resu))
+{
+echo "<strong>".($images['uname'])."</strong>".'  commented  '.($images['filename']).'<br><br>';
+}
+
+}
+
+echo '<form method="post" >';
+echo  '<input type="hidden" name="path" value="'.$pat.'">';
+echo  "<input type='textarea' name='comment' placeholder='enter your comment'><br><br>";
+echo  '<button type="submit" name="comments"style="background-color:lightblue" >post</button>';
+echo '</form>';
+echo '</div>';
+echo '</div>';
+}
+
+
+echo "</html>";
+//likes
+if (isset($_POST['like_but'])){
+$pid=$_POST['uname'];
+
+$qy=mysqli_query($con,"select * from images where uname='$id' and filename='$pid';");
+if(mysqli_num_rows($qy)==0){
+mysqli_query($con,"update  images set likes=(select likes from where uname='$id')+1 where uname='$id'");
+}
+
+
+}
+//counting likes
+function count_likes($hj){
+global $con;
+$res=mysqli_query($con,"select count(*) as nums from images where ='$hj';");
+
+while($data=mysqli_fetch_assoc($res)){
+return $data['nums'];
+}
+}
+
+mysqli_close($con);
+?>
+</body>
+</html>
+--------------------------------------------------------------------------------------------------------------------------$_COOKIE<?php
+        echo "<table><tr><td><img src='Facebook-logo.png' width='50px'></td><td><h5>posted by</h5></td>";
+           echo "<td>".$images['uname']."</td></tr></table>";?>
+        <img src="uploads/<?=$images['filename']?>" width="500px">
+<?php echo "<table><tr><td><h5>comment :</h5></td>";echo "<td>".$images['description']."</td>";?>
+echo '<td><form method="post" action="like.php" >';
+echo '<button type="submit" name='submit' value='<?php echo $images['filename'];?>style="background-color:lightblue;width:30px;border-radius:7px;margin-left:100px;"  >like</button>&nbsp';
+echo '<span class="likes">'.$images['likes'].'</span><br>';
+echo '</form><br></td></tr>';
+"</table>";
+
+?>

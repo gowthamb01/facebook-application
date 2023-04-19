@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .a{
+      background-color: rgb(22, 101, 133);
+      height: 80px;
+      text-align: center;
+      font-size: 20px;
+      text-emphasis-color: white;
+    }
+    .b
+    {
+      text-decoration-style: solid;
+      text-transform: capitalize;
+      text-size-adjust: "100px";
+      color: beige;
+      
+    }
+    .row {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    max-width: 1000px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.colm-logo {
+  flex: 0 0 40%;
+    text-align: left;
+}
+.colm-form {
+    flex: 0 0 40%;
+    text-align: center;
+}
+.colm-logo img {
+    max-width: 400px;
+}
+.colm-logo h2 {
+    font: 26px;
+    font-weight: 400;
+    padding: 0 30px;
+    line-height: 32px;
+}
+.colm-form .form-container {
+    background-color:#ffffff;
+    border: none;
+    padding-right: 5%;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    padding: 20px;
+    max-width: 400px;
+}
+.colm-form .form-container input, .colm-form .form-container .btn-login {
+    width: 100%;
+    margin: 5px 0;
+    height: 45px;
+    vertical-align: middle;
+    font-size: 16px;
+}
+.colm-form .form-container input {
+    border: 1px solid #dddfe2;
+    color: #1d2129;
+    padding: 0 8px;
+    outline: none;
+}
+.colm-form .form-container input:focus {
+    border-color: #1877f2;
+}
+.colm-form .form-container .btn-login {
+    background-color: #1877f2;
+    border: none;
+    border-radius: 6px;
+    font-size: 20px;
+    padding: 0 16px;
+    color: #ffffff;
+    font-weight: 700;
+}
+.colm-form .form-container a {
+    display: block;
+    color: #1877f2;
+    font-size: 14px;
+    text-decoration: none;
+    padding: 12px 0 2px;
+    border-bottom: 1px solid #dadde1;
+}
+.colm-form .form-container a:hover {
+    text-decoration: underline;
+}
+ .btn-new {
+    background-color: #42b72a;
+    border: none;
+    border-radius: 6px;
+    font-size: 17px;
+    line-height: 48px;
+    padding: 0 16px;
+    color: #ffffff;
+    font-weight: 700;
+    margin-top: 20px; 
+}
+
+    
+  </style>
+  <script>
+    function f1()
+    {
+      window.location.href="register.html";
+
+    }
+  </script>
+</head>
+<body>
+  <form action="index.php" method="post">
+  <div class="a">
+    <table>
+      <tr><td>
+    <img src="Facebook-logo.png" width="110px" height="60px"></td>
+   <td><h1 class="b">Facebook</h1></td></tr></table>
+</div> 
+<div class="row">
+  <div class="colm-logo">
+      <img src="fb1.png" alt="Logo">
+  </div>
+  <div class="colm-form">
+      <div class="form-container">
+        <h2>Facebook-Login</h2>
+          <input type="text" id="mid" name="mid" placeholder="Email address or phone number" required>
+          <input type="password" id="pass" name="pass" placeholder="Password" required>
+          <button class="btn-login">Login</button>
+          <a href="#">Forgotten password?</a>
+        
+      </div>
+      
+  </div>
+</div>
+</form><div>
+<button class="btn-new" id="create" onclick="f1()" style="margin-left:830px;margin-top: 390px;">create new Account</button></div>
+</body>
+</html>
